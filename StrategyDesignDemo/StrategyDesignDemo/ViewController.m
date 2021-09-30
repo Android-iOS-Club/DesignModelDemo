@@ -42,7 +42,7 @@
         _itemDecLabel = [UILabel new];
         _itemDecLabel.font = [UIFont systemFontOfSize:14];
         _itemDecLabel.textColor = [UIColor blackColor];
-        _itemDecLabel.textAlignment = NSTextAlignmentCenter;
+        _itemDecLabel.textAlignment = NSTextAlignmentLeft;
     }
     return _itemDecLabel;
 }
@@ -51,11 +51,10 @@
 static NSUInteger const kCountTextFieldTag = 100001;
 static NSUInteger const kPriceTextFieldTag = 100002;
 
-@interface ViewController ()<UITableViewDelegate, UITableViewDataSource, LMJDropdownMenuDataSource>
+@interface ViewController ()<UITableViewDelegate, UITableViewDataSource, LMJDropdownMenuDataSource, LMJDropdownMenuDelegate>
 {
     LMJDropdownMenu *_menu;
     NSArray *_optionTitles;
-    double _totalPriceNum;
     NSUInteger _selectedStrategyIndex;
 }
 @property (nonatomic, strong) UITableView *tableView;
@@ -66,6 +65,7 @@ static NSUInteger const kPriceTextFieldTag = 100002;
 @property (nonatomic, strong) UILabel *totalPriceLabel;
 @property (nonatomic, strong) ChooseStrategyManager *strategyManager;
 @property (nonatomic, strong) NSMutableArray<NSString *> *itemsTitle;
+@property (nonatomic, strong) NSNumber *totalPriceNum;
 @end
 
 @implementation ViewController
@@ -86,6 +86,7 @@ static NSUInteger const kPriceTextFieldTag = 100002;
 - (void)configContentUI {
     _menu = [[LMJDropdownMenu alloc] init];
     _menu.dataSource = self;
+    _menu.delegate = self;
     
     _menu.layer.borderColor  = [UIColor whiteColor].CGColor;
     _menu.layer.borderWidth  = 1;
@@ -111,7 +112,10 @@ static NSUInteger const kPriceTextFieldTag = 100002;
     _optionTitles = [self.strategyManager strartegyNames];
     
     // 监听total变化
+    NSKeyValueObservingOptions options = NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld;
+    [self addObserver:self forKeyPath:@"totalPriceNum" options:options context:nil];
     
+
 }
 
 - (void)setupContentUI {
@@ -169,15 +173,24 @@ static NSUInteger const kPriceTextFieldTag = 100002;
 }
 
 - (void)setContentUIData {
-    self.totalPriceLabel.text = [NSString stringWithFormat:@"%f", _totalPriceNum];
+    self.totalPriceLabel.text = [NSString stringWithFormat:@"%f", _totalPriceNum.doubleValue];
+    _selectedStrategyIndex = -1;
 }
 
 - (void)settleBtnClick:(UIButton *)sender {
-    [self.strategyManager chooseStarategyWithStrategy:_selectedStrategyIndex];
     double price = self.itemCountTextField.text.doubleValue * self.itemPriceTextField.text.doubleValue;
-    NSNumber *resultPrice = [self.strategyManager acceptCrash:[NSNumber numberWithDouble:price]];
-    _totalPriceNum += resultPrice.doubleValue;
-    NSString *itemTitle = [NSString stringWithFormat:@"个数:%@ 单价:%@ 优惠:%@ 总额: %f", self.itemCountTextField.text, self.itemPriceTextField.text, _optionTitles[_selectedStrategyIndex], resultPrice.doubleValue];
+    NSNumber *resultPrice = nil;
+    NSString *itemTitle = nil;
+    if (_selectedStrategyIndex != -1) {
+        [self.strategyManager chooseStarategyWithStrategy:_selectedStrategyIndex];
+        resultPrice = [self.strategyManager acceptCrash:[NSNumber numberWithDouble:price]];
+        itemTitle = [NSString stringWithFormat:@"个数:%@ 单价:%@ 优惠:%@ 总额: %f", self.itemCountTextField.text, self.itemPriceTextField.text, _optionTitles[_selectedStrategyIndex], resultPrice.doubleValue];
+    } else { // 没选择就是原价
+        resultPrice = [NSNumber numberWithDouble:price];
+        itemTitle = [NSString stringWithFormat:@"个数:%@ 单价:%@ 优惠:%@ 总额: %f", self.itemCountTextField.text, self.itemPriceTextField.text, @"未选择", resultPrice.doubleValue];
+    }
+    self.totalPriceNum = [NSNumber numberWithDouble:self.totalPriceNum.doubleValue + resultPrice.doubleValue];
+    
     [self.itemsTitle addObject:itemTitle];
     [self.tableView reloadData];
 }
@@ -193,13 +206,17 @@ static NSUInteger const kPriceTextFieldTag = 100002;
     }
 }
 
+- (void)dealloc {
+    [self removeObserver:self forKeyPath:@"totalPriceNum"];
+}
+
 #pragma mark - tableViewDataSource & Delegate
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     TableViewItemCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
     if (!cell) {
         cell = [[TableViewItemCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
     }
-    [cell setItemDecLabelTitle:self.itemsTitle[indexPath.item]];
+    [cell setItemDecLabelTitle:self.itemsTitle[indexPath.section]];
     return cell;
 }
 
@@ -220,9 +237,18 @@ static NSUInteger const kPriceTextFieldTag = 100002;
     return 40;
 }
 - (NSString *)dropdownMenu:(LMJDropdownMenu *)menu titleForOptionAtIndex:(NSUInteger)index{
-    _selectedStrategyIndex = index;
     return _optionTitles[index];
 }
+
+- (void)dropdownMenu:(LMJDropdownMenu *)menu didSelectOptionAtIndex:(NSUInteger)index optionTitle:(NSString *)title {
+    _selectedStrategyIndex = index;
+}
+
+#pragma mark -KVO
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context {
+    self.totalPriceLabel.text = [NSString stringWithFormat:@"%f", _totalPriceNum.doubleValue];
+}
+
 
 #pragma mark - lazy
 - (UITableView *)tableView {
