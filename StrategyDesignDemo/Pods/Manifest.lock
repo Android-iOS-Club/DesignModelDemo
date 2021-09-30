@@ -1,0 +1,20 @@
+PODS:
+  - LMJDropdownMenu (3.0.4)
+  - Masonry (1.1.0)
+
+DEPENDENCIES:
+  - LMJDropdownMenu
+  - Masonry
+
+SPEC REPOS:
+  trunk:
+    - LMJDropdownMenu
+    - Masonry
+
+SPEC CHECKSUMS:
+  LMJDropdownMenu: 50c74e9d50a480c290fec47eb575826861d0823b
+  Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
+
+PODFILE CHECKSUM: 0125ceafba3d582d021ee4137e87158d3fd0c690
+
+COCOAPODS: 1.10.2

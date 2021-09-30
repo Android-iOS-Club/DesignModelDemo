@@ -1,0 +1,6 @@
+framework module Pods_StrategyDesignDemoTests {
+  umbrella header "Pods-StrategyDesignDemoTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
