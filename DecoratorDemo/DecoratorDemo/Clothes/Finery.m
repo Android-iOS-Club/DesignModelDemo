@@ -21,5 +21,6 @@
     if (self.component) {
         [self.component show]; // 实际调用的是component的show方法
     }
+    // 上一层的Component
 }
 @end

@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2B67B0F6276F6B11009378A4 /* Transfrom.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B67B0F5276F6B11009378A4 /* Transfrom.m */; };
+		2B67B0F9276F6B84009378A4 /* Car.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B67B0F8276F6B84009378A4 /* Car.m */; };
+		2B67B0FC276F6C21009378A4 /* Changer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B67B0FB276F6C21009378A4 /* Changer.m */; };
+		2B67B0FF276F6C54009378A4 /* Robot.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B67B0FE276F6C54009378A4 /* Robot.m */; };
+		2B67B102276F6C5E009378A4 /* AirPlane.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B67B101276F6C5E009378A4 /* AirPlane.m */; };
+		2B67B103276F7476009378A4 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 96CF4E432714654400191B25 /* ViewController.m */; };
 		96CF4E3E2714654400191B25 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 96CF4E3D2714654400191B25 /* AppDelegate.m */; };
 		96CF4E412714654400191B25 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 96CF4E402714654400191B25 /* SceneDelegate.m */; };
 		96CF4E442714654400191B25 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 96CF4E432714654400191B25 /* ViewController.m */; };
@@ -45,6 +51,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2B67B0F4276F6B11009378A4 /* Transfrom.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Transfrom.h; sourceTree = "<group>"; };
+		2B67B0F5276F6B11009378A4 /* Transfrom.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Transfrom.m; sourceTree = "<group>"; };
+		2B67B0F7276F6B84009378A4 /* Car.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Car.h; sourceTree = "<group>"; };
+		2B67B0F8276F6B84009378A4 /* Car.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Car.m; sourceTree = "<group>"; };
+		2B67B0FA276F6C21009378A4 /* Changer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Changer.h; sourceTree = "<group>"; };
+		2B67B0FB276F6C21009378A4 /* Changer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Changer.m; sourceTree = "<group>"; };
+		2B67B0FD276F6C54009378A4 /* Robot.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Robot.h; sourceTree = "<group>"; };
+		2B67B0FE276F6C54009378A4 /* Robot.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Robot.m; sourceTree = "<group>"; };
+		2B67B100276F6C5E009378A4 /* AirPlane.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AirPlane.h; sourceTree = "<group>"; };
+		2B67B101276F6C5E009378A4 /* AirPlane.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AirPlane.m; sourceTree = "<group>"; };
 		96CF4E392714654400191B25 /* DecoratorDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DecoratorDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		96CF4E3C2714654400191B25 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		96CF4E3D2714654400191B25 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -105,6 +121,46 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2B67B0F2276F6AAE009378A4 /* Clothes */ = {
+			isa = PBXGroup;
+			children = (
+				96CF4E712714706200191B25 /* Person.h */,
+				96CF4E722714706200191B25 /* Person.m */,
+				96CF4E7427147B6200191B25 /* Finery.h */,
+				96CF4E7527147B6200191B25 /* Finery.m */,
+				96CF4E7727147D5E00191B25 /* TShirts.h */,
+				96CF4E7827147D5E00191B25 /* TShirts.m */,
+				96CF4E7A27147E2400191B25 /* BigTrouser.h */,
+				96CF4E7B27147E2400191B25 /* BigTrouser.m */,
+				96CF4E7D27147E8400191B25 /* Sneaker.h */,
+				96CF4E7E27147E8400191B25 /* Sneaker.m */,
+				96CF4E8027147EAE00191B25 /* LeatherShoes.h */,
+				96CF4E8127147EAE00191B25 /* LeatherShoes.m */,
+				96CF4E8327147EC800191B25 /* Tie.h */,
+				96CF4E8427147EC800191B25 /* Tie.m */,
+				96CF4E8627147EE400191B25 /* Suit.h */,
+				96CF4E8727147EE400191B25 /* Suit.m */,
+			);
+			path = Clothes;
+			sourceTree = "<group>";
+		};
+		2B67B0F3276F6AF0009378A4 /* Transfrom */ = {
+			isa = PBXGroup;
+			children = (
+				2B67B0F4276F6B11009378A4 /* Transfrom.h */,
+				2B67B0F5276F6B11009378A4 /* Transfrom.m */,
+				2B67B0F7276F6B84009378A4 /* Car.h */,
+				2B67B0F8276F6B84009378A4 /* Car.m */,
+				2B67B0FA276F6C21009378A4 /* Changer.h */,
+				2B67B0FB276F6C21009378A4 /* Changer.m */,
+				2B67B0FD276F6C54009378A4 /* Robot.h */,
+				2B67B0FE276F6C54009378A4 /* Robot.m */,
+				2B67B100276F6C5E009378A4 /* AirPlane.h */,
+				2B67B101276F6C5E009378A4 /* AirPlane.m */,
+			);
+			path = Transfrom;
+			sourceTree = "<group>";
+		};
 		96CF4E302714654400191B25 = {
 			isa = PBXGroup;
 			children = (
@@ -128,28 +184,14 @@
 		96CF4E3B2714654400191B25 /* DecoratorDemo */ = {
 			isa = PBXGroup;
 			children = (
+				2B67B0F3276F6AF0009378A4 /* Transfrom */,
+				2B67B0F2276F6AAE009378A4 /* Clothes */,
 				96CF4E3C2714654400191B25 /* AppDelegate.h */,
 				96CF4E3D2714654400191B25 /* AppDelegate.m */,
 				96CF4E3F2714654400191B25 /* SceneDelegate.h */,
 				96CF4E402714654400191B25 /* SceneDelegate.m */,
 				96CF4E422714654400191B25 /* ViewController.h */,
 				96CF4E432714654400191B25 /* ViewController.m */,
-				96CF4E712714706200191B25 /* Person.h */,
-				96CF4E722714706200191B25 /* Person.m */,
-				96CF4E7427147B6200191B25 /* Finery.h */,
-				96CF4E7527147B6200191B25 /* Finery.m */,
-				96CF4E7727147D5E00191B25 /* TShirts.h */,
-				96CF4E7827147D5E00191B25 /* TShirts.m */,
-				96CF4E7A27147E2400191B25 /* BigTrouser.h */,
-				96CF4E7B27147E2400191B25 /* BigTrouser.m */,
-				96CF4E7D27147E8400191B25 /* Sneaker.h */,
-				96CF4E7E27147E8400191B25 /* Sneaker.m */,
-				96CF4E8027147EAE00191B25 /* LeatherShoes.h */,
-				96CF4E8127147EAE00191B25 /* LeatherShoes.m */,
-				96CF4E8327147EC800191B25 /* Tie.h */,
-				96CF4E8427147EC800191B25 /* Tie.m */,
-				96CF4E8627147EE400191B25 /* Suit.h */,
-				96CF4E8727147EE400191B25 /* Suit.m */,
 				96CF4E452714654400191B25 /* Main.storyboard */,
 				96CF4E482714654700191B25 /* Assets.xcassets */,
 				96CF4E4A2714654700191B25 /* LaunchScreen.storyboard */,
@@ -306,14 +348,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2B67B0F6276F6B11009378A4 /* Transfrom.m in Sources */,
 				96CF4E8527147EC800191B25 /* Tie.m in Sources */,
 				96CF4E442714654400191B25 /* ViewController.m in Sources */,
 				96CF4E3E2714654400191B25 /* AppDelegate.m in Sources */,
+				2B67B0FC276F6C21009378A4 /* Changer.m in Sources */,
+				2B67B0F9276F6B84009378A4 /* Car.m in Sources */,
 				96CF4E732714706200191B25 /* Person.m in Sources */,
 				96CF4E4F2714654700191B25 /* main.m in Sources */,
+				2B67B0FF276F6C54009378A4 /* Robot.m in Sources */,
 				96CF4E8227147EAE00191B25 /* LeatherShoes.m in Sources */,
 				96CF4E8827147EE400191B25 /* Suit.m in Sources */,
 				96CF4E7927147D5E00191B25 /* TShirts.m in Sources */,
+				2B67B102276F6C5E009378A4 /* AirPlane.m in Sources */,
 				96CF4E7C27147E2400191B25 /* BigTrouser.m in Sources */,
 				96CF4E7627147B6200191B25 /* Finery.m in Sources */,
 				96CF4E412714654400191B25 /* SceneDelegate.m in Sources */,
@@ -333,6 +380,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2B67B103276F7476009378A4 /* ViewController.m in Sources */,
 				96CF4E632714654800191B25 /* DecoratorDemoUITests.m in Sources */,
 				96CF4E652714654800191B25 /* DecoratorDemoUITestsLaunchTests.m in Sources */,
 			);
